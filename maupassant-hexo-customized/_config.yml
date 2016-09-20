@@ -1,0 +1,64 @@
+fancybox: true ## 是否启用Fancybox[http://fancyapps.com/fancybox/]图片灯箱效果.
+duoshuo: ## 多说评论用户名[http://duoshuo.com],为空则不使用
+disqus: ## disqus用户名[https://disqus.com]，为空则不使用
+google_search: true ## 使用google搜索引擎, true/false.
+baidu_search: ## 使用百度搜索引擎, true/false.
+swiftype: ## Swiftype 站内搜索key[https://swiftype.com]
+tinysou: ## 微搜索 key[http://tinysou.com]
+self_search: ## 基于jQuery的本地搜索引擎，需要安装hexo-generator-search[https://github.com/PaicHyperionDev/hexo-generator-search]插件使用, 值：true/false.
+google_analytics: ## Google Analytics[https://www.google.com/analytics] 跟踪ID
+baidu_analytics: ## 百度统计[http://tongji.baidu.com/web/welcome/login] 跟踪ID
+show_category_count: false ## 是否显示侧边栏分类数目
+shareto: true ## 是否使用分享按鈕，值true/false.
+busuanzi: true ## 是否使用不蒜子页面访问计数，值true/false
+widgets_on_small_screens: false ## 是否在移动设备屏幕底部显示侧边栏
+
+menu: ## 自定义页面及菜单，依照已有格式填写。填写后请在source目录下建立相应名称的文件夹，并包含index.md文件，以正确显示页面。导航菜单中集成了FontAwesome[http://fontawesome.io]图标字体，可以在这里[http://fontawesome.io/icons]选择新的图标，并按照相关说明使用。
+  - page: home
+    directory: .
+    icon: fa-home
+  - page: archive
+    directory: archives/
+    icon: fa-archive
+  - page: about
+    directory: about/
+    icon: fa-user
+  - page: rss
+    directory: atom.xml
+    icon: fa-rss
+
+widgets: ## 选择和排列希望使用的侧边栏小工具,目前有: 搜索(search), 分类(category), 标签(tag), 最新文章(recent_posts), 最新回复(rencent_comments)需设置多说和disqus，友情链接(links).
+  - search
+  - category
+  - tag
+  - recent_posts
+  - recent_comments
+  - links
+
+## 友情链接，请依照格式填写。适合弄一个新页面来搞这个，从来记录你网站的历程
+##  - title: site-name1
+##    url: http://www.example1.com/
+links: 
+  - title: site-name1
+    url: http://www.example1.com/
+  - title: site-name2
+    url: http://www.example2.com/
+  - title: site-name3
+    url: http://www.example3.com/
+
+timeline: ## 网站历史时间线，在页面front-matter中设置layout: timeline可显示
+  - num: 1
+    word: 2014/06/12-Start
+  - num: 2
+    word: 2014/11/29-XXX
+  - num: 3
+    word: 2015/02/18-DDD
+  - num: 4
+    word: More
+
+# 静态文件存储路径，方便设置CDN缓存
+js: js
+css: css
+
+# 主题版本，便于静态文件更新后刷新CDN缓存
+version: 0.0.0

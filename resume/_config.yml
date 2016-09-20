@@ -1,23 +1,24 @@
 # Welcome to Jekyll!
 
 # Website settings
-title: "Jalpc"
-description: "Jack's blog,use Jekyll and github pages."
-keywords: "Jack,Jalpc,blog,Jekyll,github,gh-pages"
+title: "Sevennight"
+description: "Sevennight's resume."
+keywords: "Sevennight's resume."
 
 baseurl: "/"
-url: "http://www.jack003.com"
+url: "http://resume.sevennight.cc"
 # url: "http://127.0.0.1:4000"
 
 # author
 author:
-  name: 'Jack'
-  first_name: 'Jia'
-  last_name: 'Kun'
-  email: 'jack19890614@gmail.com'
-  facebook_username: 'jiakunnj'
-  github_username: 'Jack614'
-  head_img: 'static/img/landing/Jack.jpg'
+  name: 'Sevennight'
+  first_name: 'Luo'
+  last_name: 'Yangyin'
+  qq_account: '754352470'
+  email: 'cnsevennight@qq.com'
+  facebook_username: 'luoyangyin'
+  github_username: '7ye'
+  head_img: 'static/img/landing/sevennight.jpg'
 
 # landing page
 landing:
@@ -53,28 +54,6 @@ index:
   database: 'Database'
   mac: 'Mac'
   life: 'Life'
-
-# donate
-donate:
-  wechat: 'static/img/pay/wechat.png'
-  alipay: 'static/img/pay/alipay.png'
-
-# comment
-changyan:
-  appid: cysfY7ULn
-  conf: prod_861928934cecb7a18e15bedaed9dae29
-
-# share
-bshare:
-  uuid: 513f778e-a8f7-4c20-9ec2-d29cc2328d75
-
-# baidu analytics
-ba:
-  uuid: 317acca9ef9255b934e46371e471431d
-
-# google analytics
-ga:
-  id: UA-73784599-1
 
 # blog img path
 img_path: '/static/img/blog'

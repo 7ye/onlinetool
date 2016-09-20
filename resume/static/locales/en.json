@@ -1,6 +1,6 @@
 {
   "website":{
-    "title": "Jack's blog"
+    "title": "Sevennight's resume"
   },
   "nav":{
     "home": "Home",
@@ -13,7 +13,7 @@
   },
   "about_me":{
     "about_me": "About Me",
-    "des": "I am a Python engineer with website development, automation Ops and writing scripts experience. Life is a continuous learning process, so work makes me more rigorous, travel makes my life more colorful. I can make lots of friends when I coding and travel."
+    "des": "I am a Java engineer with website development, Experience in developing web sites and deploying management. Life is a continuous learning process, so work makes me more rigorous, struggle makes my life more colorful. Like to get to know all kinds of friends."
   },
   "skills":{
     "my_skills": "My Skills"
@@ -26,21 +26,21 @@
   },
   "career":{
     "my_career": "My Career",
-    "nextcode": "Nextcode",
-    "nextcode_des": "Now I am in Nextcode and develop website with Python code for genetic analysis.",
+    "nextcode": "Mai Yaxin",
+    "nextcode_des": "Now I'm at Mai Yaxin, Use java development website, And contact with a lot of outsourcing projects and the use of a wide range of Technology.",
     "nextcode_date": "Apr. 2016",
-    "nextcode_job": "Python Developer",
-    "netease": "Netease Game",
-    "netease_des": "In Netease game, I learned game service system and use Python code for ops.",
-    "netease_date": "Jun. 2015",
-    "netease_job": "Dev Ops",
-    "ucloud": "Ucloud",
-    "ucloud_des": "In ucloud, I started to deal with servers and Linux system and use shell scripts to manage massive server.",
-    "ucloud_date": "Sep. 2013",
-    "ucloud_job": "Dev Ops",
+    "nextcode_job": "Java Developer",
+    "netease": "Pig bear Technology",
+    "netease_des": "In the second year of the pig bear, I served as head of the Java project, To enhance their own technical experience and management experience.",
+    "netease_date": "Nov. 2014",
+    "netease_job": "Java Developer",
+    "ucloud": "Domain of the sky",
+    "ucloud_des": "Here, I started working with business projects, servers, operating systems, And begin to be familiar with the process of website development to server deployment.",
+    "ucloud_date": "May. 2014",
+    "ucloud_job": "Java Developer",
     "college": "Graduation",
-    "college_des": "At July 2013,I graduated from college and started my IT technology tour.",
-    "college_date": "Jul. 2013",
+    "college_des": "At Mar 2013, I graduated from Vocational Training College and started my IT technology tour.",
+    "college_date": "Mar. 2014",
     "college_job": "Student"
   },
   "blog":{
