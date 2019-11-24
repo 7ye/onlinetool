@@ -1,0 +1,77 @@
+body {
+	font-family: Arimo,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 13px;
+	line-height: 1.42857143;
+	color: #2c2e2f;
+	background-color: #fff;
+}
+.bd-placeholder-img {
+	font-size: 1.125rem;
+	text-anchor: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+@media (min-width: 768px) {
+	.bd-placeholder-img-lg {
+		font-size: 3.5rem;
+	}
+}
+
+.item-grid ul {
+	float: left;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+.item-grid ul li {
+	position: relative;
+	float: left;
+	list-style: none;
+	padding: 0;
+}
+.item-grid .item-node {
+	transition: .2s;
+	width: calc(100% - 24px);
+	width: -webkit-calc(100% - 24px);
+	width: -moz-calc(100% - 24px);
+	overflow: hidden;
+	border-radius: 4px;
+	background: rgba(0,0,0,.02);
+	margin: 12px;
+}
+.item-grid .item-node:hover {
+	background: #F1F2F9;
+}
+.item-grid ul li a.tool-link {
+	display: block;
+	height: 64px;
+	line-height: 18px;
+	padding: 14px 16px;
+	color: #A1A7B7;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	text-decoration: none!important;
+}
+.item-grid ul li a.tool-link:hover {
+	color: #6B7386;
+}
+.item-grid ul li a.tool-link i {
+	float: left;
+	width: 32px;
+	height: 32px;
+	margin: 2px 16px 0 0;
+	border-radius: 4px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 32px;
+	background-image: url(images/Icon-No-Link.png);
+}
+.item-grid ul li a.tool-link b {
+	display: block;
+	color: #30333C;
+	transition: .2s;
+}
