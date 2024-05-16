@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>利息计算</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <style>
+	body {
+		margin: 0;
+		padding: 0;
+		font-family: -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
+		font-size: 14px;
+	}
+	#logView {
+		padding: 20px;
+		font-size: 13px;
+	}
+	.leftDiv {
+		width: 40%;
+		position: fixed;
+		display: inline-block;
+		border-right: 1px solid #ccc;
+		height: 100%;
+	}
+	.app {
+		padding: 20px;
+	}
+	.rightDiv {
+	    margin-top: 20px;
+		position: relative;
+		width: 60%;
+		display: inline-block;
+		margin-left: 40%;
+	}
+	.action {
+		margin-left: 20px;
+		position: fixed;
+		top: 0px;
+		width: 100%;
+		background-color: #fff;
+		padding: 5px 0;
+	}
+  </style>
+</head>
+<body>
+
+	<div>
+		<div class="leftDiv">
+			<div class="app">
+				<h6>利息计算工具</h6>
+				<input id="a_money" value="10000" style="width: 60px;"/>元，日利率：
+				<input id="a_rx" type="text" value="0.065" style="width: 50px;"/>%，借
+				<input id="a_day" type="text" value="1" style="width: 50px;"/>天
+				<button type="button" onclick="a_fun()">计算</button>
+				<br />
+			</div>
+		</div>
+		<div class="rightDiv">
+			<div class="action">
+				<span>日志 : </span><button type="button" onclick="clearLog()">清空</button>
+			</div>
+			<div id="logView"></div>
+		</div>
+	</div>
+
+	<script>
+		
+	var a_fun = function() {
+		var a_money = $("#a_money").val();
+		var a_rx = $("#a_rx").val();
+		var a_day = $("#a_day").val();
+		
+		var totalMoney = a_money * (a_rx / 100) * a_day;
+		console.log(totalMoney);
+		
+		$("#logView").append("金额："+a_money+"元，日利率："+a_rx+"%，借 "+a_day+" 天，利息为："+totalMoney+"元<br/><br/>");
+	}
+	
+	var clearLog = function() {
+		$("#logView").empty();
+	}
+	</script>
+</body>
+</html>

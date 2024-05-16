@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Title</title>
+    <style>
+        body {
+            font-size: 1rem;
+        }
+        .item {
+            margin: 0.3125rem 0;
+        }
+        .item label {
+            width: 10rem;
+            text-align: right;
+            display: inline-block;
+            margin-right: 0.625rem;
+        }
+        .item input {
+            padding: .3rem .5rem;
+        }
+        .oper {
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div id="content"></div>
+    <div>
+        <div style="width: 10rem;display: inline-block"></div>
+        <div style="display: inline-block;">
+            <div class="oper">
+                <button id="addItem">添加节点</button>
+            </div>
+            <div id="result">
+                <p>结果实时展示</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+
+    var pageCacheKey = "ts_calc";
+    var pageCacheStr = localStorage.getItem(pageCacheKey);
+    console.log(pageCacheStr);
+    var dArray = [];
+    try {
+        dArray = JSON.parse(pageCacheStr);
+    } catch (e) {
+        localStorage.setItem(pageCacheKey, null);
+    }
+
+    var genNode = function (n, v) {
+        $("#content").append('<div class="item"><label contenteditable="true">'+n+'</label><input type="text" value="'+v+'"/></div>');
+        calc();
+    };
+
+    var removeNode = function () {
+        calc();
+    };
+
+    var calc = function() {
+        var sumArray = [];
+        var sumValue = 0;
+        $('#content').find(".item").each(function() {
+            var n = $(this).find("label").text();
+            var v = $(this).find("input").val();
+            sumValue = sumValue + Number(v);
+            if (n) {
+                var nodeData = {"name": n, "value": v};
+                sumArray.push(nodeData);
+            }
+        });
+        $("#result p").html(sumValue);
+        // 保存最新数据到缓存
+        localStorage.setItem(pageCacheKey, JSON.stringify(sumArray));
+    };
+
+    $('#content').bind('input propertychange', function() {
+        calc();
+    });
+
+    $("#addItem").click(function () {
+        genNode("名称", 0);
+    });
+
+    // 初始化数据
+    if (dArray) {
+        for (var i = 0; i < dArray.length; i++) {
+            var n = dArray[i];
+            if (n.name) {
+                genNode(n.name, n.value);
+            }
+        }
+    }
+</script>
+</body>
+</html>

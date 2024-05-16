@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>maven手动命令下载快速生成</title>
+	<style>
+		.item {
+			margin-top: 30px;
+		}
+		input {
+			height: 35px;
+			width: 600px;
+			line-height: 35px;
+			padding: 5px 10px;
+		}
+		button {
+			padding: 12px 100px;
+		}
+	</style>
+</head>
+<body>
+<div style="padding: 15px;">
+	<div class="item">
+		<label>私服地址</label>
+		<input id="nexusUrl" placeholder="私服地址" value="http://192.168.45.199:8081/nexus/content/groups/public"/>
+	</div>
+	<div class="item">
+		<label>识别内容</label>
+		<input id="content" placeholder="识别内容"/>
+	</div>
+	<div class="item">
+		<button type="button" onclick="switchFun()" >转换</button>
+	</div>
+	<div class="item">
+		<span id="result" style="font-size: 12px;"></span>
+	</div>
+</div>
+	
+<script>
+	
+
+	// 转换方法
+	var switchFun = function() {
+		
+		var mvnExpStr = "mvn dependency:get -DremoteRepositories={0} -DgroupId={1} -DartifactId={2} -Dpackaging={3} -Dversion={4}";
+		
+		document.getElementById("result").innerText = "1";
+		
+		// 私服下载地址
+		var nexusUrl = document.getElementById("nexusUrl").value;
+		// 内容
+		var str = document.getElementById("content").value;
+		console.log('处理内容：'+str);
+		
+		var array = str.split(":");
+		
+		mvnExpStr = mvnExpStr.replace("{0}", nexusUrl);
+		mvnExpStr = mvnExpStr.replace("{1}", array[0]);
+		mvnExpStr = mvnExpStr.replace("{2}", array[1]);
+		if (array.length == 3) {
+			mvnExpStr = mvnExpStr.replace("{3}", "jar");
+			mvnExpStr = mvnExpStr.replace("{4}", array[2]);
+		} else {
+			mvnExpStr = mvnExpStr.replace("{3}", array[2]);
+			mvnExpStr = mvnExpStr.replace("{4}", array[3]);
+		}
+		
+		
+		document.getElementById("result").innerText = mvnExpStr;
+	}
+	
+</script>
+</body>
+</html>

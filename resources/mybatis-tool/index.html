@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>MyBatis resultMap在线生成</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <style>
+	body {
+		margin: 0;
+		padding: 0;
+		font-family: -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
+		font-size: 14px;
+	}
+	#logView {
+		padding: 20px;
+		font-size: 13px;
+	}
+	.leftDiv {
+		width: 40%;
+		position: fixed;
+		display: inline-block;
+		border-right: 1px solid #ccc;
+		height: 100%;
+	}
+	.app {
+		padding: 20px;
+	}
+	.rightDiv {
+	    margin-top: 20px;
+		position: relative;
+		width: 60%;
+		display: inline-block;
+		margin-left: 40%;
+	}
+	.action {
+		margin-left: 20px;
+		position: fixed;
+		top: 0px;
+		width: 100%;
+		background-color: #fff;
+		padding: 5px 0;
+	}
+	label {
+		cursor: pointer;
+		margin-right: 16px;
+	}
+	input[type='radio'] {
+		margin: 0;
+		margin-right: 5px;
+	}
+	table {
+		width: 100%;
+	}
+	table input {
+		cursor: pointer;
+	}
+	table thead {
+		text-align: left;
+	}
+  </style>
+</head>
+<body>
+
+	<div>
+		<div class="leftDiv">
+			<div class="app">
+				<h6>MyBatis xml生成</h6>
+<textarea id="dataTextarea" style="width: 100%;height: 150px;">
+id int
+uid int
+collect_id int
+name varchar
+pid int
+sort double
+icon varchar
+res_count int
+has_children smallint
+</textarea>
+				<div>
+					<table>
+						<thead>
+							<th>名</th>
+							<th>类型</th>
+							<th>是否允许为空</th>
+							<th>主键</th>
+						</thead>
+						<tbody id="tableData"></tbody>
+					</table>
+				</div>
+				<div style="margin: 16px 0px;">
+					<h6>property属性命名格式</h6>
+					<label><input name="nameType" type="radio" checked=""/>驼峰</label>
+					<label><input name="nameType" type="radio"/>原始</label>
+				</div>
+				<button id="generate">计算</button>
+			</div>
+		</div>
+		<div class="rightDiv">
+			<div class="action">
+				<span>结果 : </span><button id="chearLog">清空</button>
+			</div>
+			<div id="logView"></div>
+		</div>
+	</div>
+
+	<script>
+	$(function() {
+		
+		$("#dataTextarea").bind('input propertychange','textarea',function(){
+			generateTable();
+		});
+		
+		$("#generate").click(function() {
+			console.log("生成");
+			generateResult();
+		});
+		
+		// 下划线转换驼峰
+		var toHump = function(name) {
+		    return name.replace(/\_(\w)/g, function(all, letter){
+		        return letter.toUpperCase();
+		    });
+		}
+		
+		// 驼峰转换下划线
+		var toLine = function(name) {
+		  return name.replace(/([A-Z])/g,"_$1").toLowerCase();
+		}
+		
+		var generateTable = function() {
+			$("#tableData").empty();
+			var text = $("#dataTextarea").val();
+			text = text.replace("	", " ");
+			var textArray = text.split("\n");
+			for(var i = 0; i < textArray.length; i++) {
+				var currentText = textArray[i];
+				var name = currentText.split(" ")[0];
+				var type = currentText.split(" ")[1];
+				if (name && type) {
+					$("#tableData").append('<tr><td>'+name+'</td><td>'+type+'</td><td><input class="is-empty" type="checkbox"/></td><td><input class="is-id" type="checkbox"/></td></tr>');
+				}
+			}
+		}
+		
+		var typeConvert = function(type) {
+			if(type === 'int') {
+				return 'INTEGER';
+			} else if (type === 'datetime') {
+				return 'DATE';
+			} else {
+				return type.toUpperCase();
+			}
+		}
+		
+		var generateResult = function() {
+			var resultContent = '';
+			$("#tableData tr").each(function() {
+				var name = $(this).find("td").eq(0).text();
+				var type = $(this).find("td").eq(1).text();
+				var isEmpty = $(this).find("td").eq(2).find("input").is(':checked');
+				var isId = $(this).find("td").eq(3).find("input").is(':checked');
+				if (isId) {
+					resultContent += '&lt;id column="id" property="id" jdbcType="INTEGER" /&gt;<br/>';
+				} else {
+					resultContent += '&lt;result column="'+name+'" property="'+toHump(name)+'" jdbcType="'+typeConvert(type)+'" /&gt;<br/>';
+				}
+			});
+			$("#logView").empty();
+			$("#logView").append(resultContent);
+		}
+		
+		generateTable();
+	});
+	</script>
+</body>
+</html>

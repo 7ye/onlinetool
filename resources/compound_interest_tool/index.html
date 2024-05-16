@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>复利计算</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <style>
+	body {
+		margin: 0;
+		padding: 0;
+		font-family: -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
+		font-size: 14px;
+	}
+	#logView {
+		padding: 20px;
+		font-size: 13px;
+	}
+	.leftDiv {
+		width: 20%;
+		position: fixed;
+		display: inline-block;
+		border-right: 1px solid #ccc;
+		height: 100%;
+	}
+	.app {
+		padding: 20px;
+	}
+	.rightDiv {
+	    margin-top: 20px;
+		position: relative;
+		width: 80%;
+		display: inline-block;
+		margin-left: 20%;
+	}
+	.action {
+		margin-left: 20px;
+		position: fixed;
+		top: 0px;
+		width: 100%;
+		background-color: #fff;
+		padding: 5px 0;
+	}
+  </style>
+</head>
+<body>
+
+	<div>
+		<div class="leftDiv">
+			<div class="app">
+				<h6>复利计算工具</h6>
+				<input type="text" id="money" value="100000"/><br/><br/>
+				<input type="text" id="profit" style="width:50px;" value="1"/>&nbsp;收益率(%)<br/><br/>
+				<input type="text" id="many" style="width:50px;" value="1"/>&nbsp;次复利<br/><br/>
+				<button id="calcBtn">计算</button>
+			</div>
+		</div>
+		<div class="rightDiv">
+			<div class="action">
+				<span>日志 : </span><button id="chearLog">清空</button>
+			</div>
+			<div id="logView"></div>
+		</div>
+	</div>
+
+	<script>
+	$(function() {
+
+		$("#calcBtn").click(function() {
+
+			var money = Number($("#money").val());
+
+			var profit = Number($("#profit").val());
+
+			var many = Number($("#many").val());
+
+			var currentMoney = money;
+
+			var logs = [];
+
+			for(var i = 0; i < many; i++) {
+				var calcBefore = currentMoney;
+				var calcAfter = currentMoney * (profit/100);
+				currentMoney = calcBefore + calcAfter;
+				logs.push("第"+(i+1)+"次计算，公式 : (" + calcBefore.toFixed(2) + " * ("+profit.toFixed(2) + " / 100)， 本次收益为 : "+calcAfter.toFixed(2)+"，最新余额为 : " + currentMoney.toFixed(2)+"<br/>");
+			}
+
+			$.each(logs, function(index,value){
+				$("#logView").append(value);
+			});
+
+			$("#logView").append("本金: " + money + "， 复利收益 : " + (currentMoney-money).toFixed(2) + "，最终余额 : " + currentMoney.toFixed(2) + "<br/><br/>");
+		});
+		
+		$("#chearLog").click(function() {
+			$("#logView").empty();
+		});
+	});
+	</script>
+</body>
+</html>
